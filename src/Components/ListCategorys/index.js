@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export function ListCategorys() {
 
@@ -11,17 +11,24 @@ export function ListCategorys() {
     { id: Math.random(), name: 'Strategic' }
   ]
 
+  function handleSubmitCategory() {
+    console.log('Click')
+  }
+
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList 
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
+        horizontal={true}
         data={category}
         keyExtractor={( item ) => item.id}
         renderItem={({ item }) => {
           return (
-            <View>
-              <Text style={{ color: '#FFF' }} >{item.name}</Text>
+            <View style={styles.card}>
+              <TouchableOpacity onPress={() => handleSubmitCategory()}>
+                <Text style={styles.title} >{item.name}</Text>
+              </TouchableOpacity>
             </View>
           )
         }}
@@ -29,3 +36,26 @@ export function ListCategorys() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 12,
+    marginTop: 28
+  },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    backgroundColor: '#64748B',
+    width: 85,
+    height: 35,
+    marginRight: 14,
+    borderRadius: 8,
+  },
+  title: {
+    fontSize: 11,
+    fontFamily: 'Poppins-Regular',
+    color: '#FFF'
+  }
+});
