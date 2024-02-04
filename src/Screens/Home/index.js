@@ -1,9 +1,24 @@
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, Platform } from 'react-native';
+
+import { Header } from '../../Components/Header';
+import { ListCategorys } from '../../Components/ListCategorys';
 
 export function Home() {
- return (
-  <View style={{ marginTop: 50 }}>
-    <Text>Home</Text>
-  </View>
+  return (
+    <View style={styles.container}>
+      <Header />
+
+      <ListCategorys />
+
+      <Text>Home</Text>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#050B18',
+    paddingTop: Platform.OS === 'ios' ? 50 : 20
+  }
+});
