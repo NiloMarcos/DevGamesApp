@@ -16,7 +16,9 @@ export function StackRoutes() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Search"
+    >
       <Stack.Screen
         name="Home"
         component={Home}
